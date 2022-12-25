@@ -1,0 +1,16 @@
+version: "3"
+services:
+  test-demo:
+    build: .
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+    privileged: true
+    tty: true
+    ports:
+      - 9090:9090
+  nginx-demo:
+    image: nginx:1.22.1
+    volumes:
+      - ./html:/usr/share/nginx/html
+    ports:
+      - 8080:80
